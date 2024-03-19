@@ -1,0 +1,889 @@
+openapi: "3.0.3"
+info:
+  title: "VeterinaryManagementSystem API"
+  description: "VeterinaryManagementSystem API"
+  version: "1.0.0"
+servers:
+  - url: "https://VeterinaryManagementSystem"
+paths:
+  /v1/vaccine/update/{id}:
+    put:
+      summary: "PUT v1/vaccine/update/{id}"
+      operationId: "update"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/VaccineRequest"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/VaccineResponse"
+  /v1/vaccine/save:
+    post:
+      summary: "POST v1/vaccine/save"
+      operationId: "save"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/VaccineRequest"
+        required: true
+      responses:
+        "201":
+          description: "Created"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/VaccineResponse"
+  /v1/vaccine/vaccinesByProtectionDateRange:
+    post:
+      summary: "POST v1/vaccine/vaccinesByProtectionDateRange"
+      operationId: "getVaccinesByProtectionDateRange"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/VaccineDateRangeRequest"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/VaccineResponse"
+  /v1/vaccine/{id}:
+    delete:
+      summary: "DELETE v1/vaccine/{id}"
+      operationId: "delete"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+    get:
+      summary: "GET v1/vaccine/{id}"
+      operationId: "getById"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/VaccineResponse"
+  /v1/vaccine:
+    get:
+      summary: "GET v1/vaccine"
+      operationId: "findAll"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/VaccineResponse"
+  /v1/vaccine/byAnimal/{animalId}:
+    get:
+      summary: "GET v1/vaccine/byAnimal/{animalId}"
+      operationId: "getVaccinesByAnimal"
+      parameters:
+        - name: "animalId"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/VaccineResponse"
+  /v1/doctor/update/{id}:
+    put:
+      summary: "PUT v1/doctor/update/{id}"
+      operationId: "update"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DoctorRequest"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DoctorResponse"
+  /v1/doctor/save:
+    post:
+      summary: "POST v1/doctor/save"
+      operationId: "save"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DoctorRequest"
+        required: true
+      responses:
+        "201":
+          description: "Created"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DoctorResponse"
+  /v1/doctor/{id}:
+    delete:
+      summary: "DELETE v1/doctor/{id}"
+      operationId: "delete"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+    get:
+      summary: "GET v1/doctor/{id}"
+      operationId: "getById"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/DoctorResponse"
+  /v1/doctor:
+    get:
+      summary: "GET v1/doctor"
+      operationId: "findAll"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/DoctorResponse"
+  /v1/customer/update/{id}:
+    put:
+      summary: "PUT v1/customer/update/{id}"
+      operationId: "update"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CustomerRequest"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/CustomerResponse"
+  /v1/customer/save:
+    post:
+      summary: "POST v1/customer/save"
+      operationId: "save"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CustomerRequest"
+        required: true
+      responses:
+        "201":
+          description: "Created"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/CustomerResponse"
+  /v1/customer/{id}:
+    delete:
+      summary: "DELETE v1/customer/{id}"
+      operationId: "delete"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+    get:
+      summary: "GET v1/customer/{id}"
+      operationId: "getById"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/CustomerResponse"
+  /v1/customer:
+    get:
+      summary: "GET v1/customer"
+      operationId: "findAll"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/CustomerResponse"
+  /v1/animal/update/{id}:
+    put:
+      summary: "PUT v1/animal/update/{id}"
+      operationId: "update"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AnimalRequest"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AnimalResponse"
+  /v1/animal/save:
+    post:
+      summary: "POST v1/animal/save"
+      operationId: "save"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AnimalRequest"
+        required: true
+      responses:
+        "201":
+          description: "Created"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AnimalResponse"
+  /v1/animal/{id}:
+    delete:
+      summary: "DELETE v1/animal/{id}"
+      operationId: "delete"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+    get:
+      summary: "GET v1/animal/{id}"
+      operationId: "getById"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AnimalResponse"
+  /v1/animal:
+    get:
+      summary: "GET v1/animal"
+      operationId: "findAll"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/AnimalResponse"
+  /v1/animal/byOwnerName:
+    get:
+      summary: "GET v1/animal/byOwnerName"
+      operationId: "getAnimalsByOwnerName"
+      parameters:
+        - name: "ownerName"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/AnimalResponse"
+  /v1/animal/byName:
+    get:
+      summary: "GET v1/animal/byName"
+      operationId: "getAnimalsByName"
+      parameters:
+        - name: "name"
+          in: "query"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/AnimalResponse"
+  /v1/animal/customer:
+    get:
+      summary: "GET v1/animal/customer"
+      operationId: "getAnimalsByOwner"
+      parameters:
+        - name: "customerId"
+          in: "query"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/AnimalResponse"
+  /v1/available-date/update/{id}:
+    put:
+      summary: "PUT v1/available-date/update/{id}"
+      operationId: "uodate"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AvailableDateRequest"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AvailableDateResponse"
+  /v1/available-date/save:
+    post:
+      summary: "POST v1/available-date/save"
+      operationId: "save"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AvailableDateRequest"
+        required: true
+      responses:
+        "201":
+          description: "Created"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AvailableDateResponse"
+  /v1/available-date/{id}:
+    delete:
+      summary: "DELETE v1/available-date/{id}"
+      operationId: "delete"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+    get:
+      summary: "GET v1/available-date/{id}"
+      operationId: "getById"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AvailableDateResponse"
+  /v1/available-date:
+    get:
+      summary: "GET v1/available-date"
+      operationId: "findAll"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/AvailableDateResponse"
+  /v1/appointment/update/{id}:
+    put:
+      summary: "PUT v1/appointment/update/{id}"
+      operationId: "update"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AppointmentRequest"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AppointmentResponse"
+  /v1/appointment/save:
+    post:
+      summary: "POST v1/appointment/save"
+      operationId: "save"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AppointmentRequest"
+        required: true
+      responses:
+        "201":
+          description: "Created"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AppointmentResponse"
+  /v1/appointment/filteredByDoctor:
+    post:
+      summary: "POST v1/appointment/filteredByDoctor"
+      operationId: "getFilteredAppointmentsByDoctor"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FilteredAppointmentsRequest"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/FilteredAppointmentsResponse"
+  /v1/appointment/filteredByAnimal:
+    post:
+      summary: "POST v1/appointment/filteredByAnimal"
+      operationId: "getFilteredAppointmentsByAnimal"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/FilteredAppointmentsRequest"
+        required: true
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/FilteredAppointmentsResponse"
+  /v1/appointment/{id}:
+    delete:
+      summary: "DELETE v1/appointment/{id}"
+      operationId: "delete"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+    get:
+      summary: "GET v1/appointment/{id}"
+      operationId: "getById"
+      parameters:
+        - name: "id"
+          in: "path"
+          required: true
+          schema:
+            type: "integer"
+            format: "int64"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AppointmentResponse"
+  /v1/appointment:
+    get:
+      summary: "GET v1/appointment"
+      operationId: "findAll"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            '*/*':
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/AppointmentResponse"
+components:
+  schemas:
+    VaccineRequest:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        code:
+          type: "string"
+        protectionStartDate:
+          type: "string"
+          format: "date"
+        protectionFinishDate:
+          type: "string"
+          format: "date"
+        animalId:
+          type: "integer"
+          format: "int64"
+    AnimalResponse:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        species:
+          type: "string"
+        breed:
+          type: "string"
+        gender:
+          type: "string"
+          enum:
+            - "MALE"
+            - "FEMALE"
+        colour:
+          type: "string"
+        dateOfBirth:
+          type: "string"
+          format: "date"
+    VaccineResponse:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        code:
+          type: "string"
+        protectionStartDate:
+          type: "string"
+          format: "date"
+        protectionFinishDate:
+          type: "string"
+          format: "date"
+        animal:
+          $ref: "#/components/schemas/AnimalResponse"
+    VaccineDateRangeRequest:
+      type: "object"
+      properties:
+        startDate:
+          type: "string"
+          format: "date"
+        endDate:
+          type: "string"
+          format: "date"
+    DoctorRequest:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        phone:
+          type: "string"
+        email:
+          type: "string"
+        address:
+          type: "string"
+        city:
+          type: "string"
+    DoctorResponse:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        phone:
+          type: "string"
+        email:
+          type: "string"
+        address:
+          type: "string"
+        city:
+          type: "string"
+    CustomerRequest:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        phone:
+          type: "string"
+        email:
+          type: "string"
+        address:
+          type: "string"
+        city:
+          type: "string"
+    CustomerResponse:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        phone:
+          type: "string"
+        email:
+          type: "string"
+        address:
+          type: "string"
+        city:
+          type: "string"
+    AnimalRequest:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        species:
+          type: "string"
+        breed:
+          type: "string"
+        gender:
+          type: "string"
+          enum:
+            - "MALE"
+            - "FEMALE"
+        colour:
+          type: "string"
+        dateOfBirth:
+          type: "string"
+          format: "date"
+        customerId:
+          type: "integer"
+          format: "int64"
+    AvailableDateRequest:
+      type: "object"
+      properties:
+        availableDate:
+          type: "string"
+          format: "date"
+        doctorId:
+          type: "integer"
+          format: "int64"
+    Doctor:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        phone:
+          type: "string"
+        email:
+          type: "string"
+        address:
+          type: "string"
+        city:
+          type: "string"
+    AvailableDateResponse:
+      type: "object"
+      properties:
+        availableDate:
+          type: "string"
+          format: "date"
+        doctor:
+          $ref: "#/components/schemas/Doctor"
+    AppointmentRequest:
+      type: "object"
+      properties:
+        appointmentDate:
+          type: "string"
+          format: "date"
+        appointmentHour:
+          type: "integer"
+          format: "int32"
+        doctorId:
+          type: "integer"
+          format: "int64"
+        animalId:
+          type: "integer"
+          format: "int64"
+    Customer:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        phone:
+          type: "string"
+        email:
+          type: "string"
+        address:
+          type: "string"
+        city:
+          type: "string"
+    Animal:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+        species:
+          type: "string"
+        breed:
+          type: "string"
+        gender:
+          type: "string"
+          enum:
+            - "MALE"
+            - "FEMALE"
+        colour:
+          type: "string"
+        dateOfBirth:
+          type: "string"
+          format: "date"
+        customer:
+          $ref: "#/components/schemas/Customer"
+    AppointmentResponse:
+      type: "object"
+      properties:
+        appointmentDate:
+          type: "string"
+          format: "date-time"
+        doctor:
+          $ref: "#/components/schemas/Doctor"
+        animal:
+          $ref: "#/components/schemas/Animal"
+    FilteredAppointmentsRequest:
+      type: "object"
+      properties:
+        startDate:
+          type: "string"
+          format: "date"
+        endDate:
+          type: "string"
+          format: "date"
+    FilteredAppointmentsResponse:
+      type: "object"
+      properties:
+        appointments:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/AppointmentResponse"

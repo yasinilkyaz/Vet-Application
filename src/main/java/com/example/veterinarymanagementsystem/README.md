@@ -1,4 +1,5 @@
 # Veteriner Yönetim Sistemi
+
 Veteriner Yönetim Sistemi, bir veteriner kliniğinin işlerini yönetebilmesi amacıyla geliştirilen bir API'yi içerir. Aşağıda projenin temel özellikleri ve kullanılan teknolojiler özetlenmiştir:
 
 
